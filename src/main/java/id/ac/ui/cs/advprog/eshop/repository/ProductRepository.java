@@ -13,10 +13,21 @@ public class ProductRepository {
 
     public Product create(Product product) {
         productData.add(product);
+        for (Product productDatum : productData) {
+            System.out.print(productDatum);
+        }
         return product;
     }
 
     public Iterator<Product> findAll() {
         return productData.iterator();
+    }
+
+    public boolean delete(Product product) {
+        productData.remove(product);
+        for (Product productDatum : productData) {
+            System.out.print(productDatum);
+        }
+        return productData.contains(product);
     }
 }
