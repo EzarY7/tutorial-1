@@ -52,4 +52,14 @@ public class ProductServiceImpl implements ProductService{
 
         return product;
     }
+
+
+    @Override
+    public Product edit(String CurrentId, String Id, String Name, int Quantity){
+        Product product = getId(CurrentId);
+        product.setProductId(Id);
+        product.setProductName(Name);
+        product.setProductQuantity(Quantity);
+        return product;
+    }
 }
