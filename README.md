@@ -27,3 +27,14 @@ Whether or not the new test suite reduces the quality of the code's readability 
 different naming conventions, then it could lead to confusion and a lack of readability. If it closely mirrors
 existing tests, then it could lead to a risk of code duplication.
 
+<h1>Tutorial 2</h1>
+
+<h3>Reflection</h3>
+
+1. The code quality issues detected by PMD were minor issues that required simple fixes. The code scanning brought up 14
+issues, almost half of which were issues related to variable naming. I simply changed certain variables to adhere to widely
+accepted naming conventions like the camelCase. Another thing that was brought up in the scan was the redundancy of having
+public modifiers in an interface. I removed those modifiers to fix the issue.
+2. I think the current implementation of CI/CD in this project aligns well with the definition. The workflows effectively maintain a 
+standard of code quality by running tests and code scans whenever someone pushes to the repository, aligning with the principles of Continuous Integration.
+As for the project's deployment, it is made seamless through the use of automation, exemplifying the essence of 'Continuous' in Continuous Deployment. 
