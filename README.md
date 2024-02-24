@@ -40,3 +40,34 @@ public modifiers in an interface. I removed those modifiers to fix the issue.
 standard of code quality by running tests and code scans whenever someone pushes to the repository, aligning with the principles of Continuous Integration.
 As for the project's deployment, it is made seamless through the use of automation, exemplifying the essence of 'Continuous' in Continuous Deployment. 
 
+<h1>Tutorial 3</h1>
+
+<h3>SOLID Principles</h3>
+SRP (Single Responsibility Principle) states that a class should be responsible for a single purpose or functionality in
+the program, and that it only has one reason to change. The class should only be modified when the requirements of its
+single functionality changes.
+
+OCP (Open Closed Principle) states that a software entity should be open for extension but closed for modification. This
+principle promotes code maintainability by ensuring the code is adaptable to future changes in requirements.
+
+LSP (Lizkov Substitution Principle) states that an object of a subclass should be replaceable with objects of its
+superclass. In other words, the behavior of an object of a superclass should not be overridden by that of its subclass.
+
+ISP (Interface Segregation Principle) states that a user should not be forced to implement parts of an interface
+that are irrelevant to them.
+
+DIP (Dependency Inversion Principle) states that high-level modules should not depend on low-level modules. Instead, they
+should both depend on abstractions. This principle aims to reduce the dependencies between modules, preventing the potential
+ripple effect of errors in case one module develops an issue.
+
+<h3>Reflection</h3>
+
+I applied the SRP and LSP principles by separating the CarController class into its own file. It showcases the use of
+the SRP by ensuring that the ProductController file is only responsible for one purpose, that is the URL routing of Product
+object related pages. In the provided code from the tutorial, the CarController class extended the ProductController class
+which violated the LSP. Moving the CarController class into its own file helped this project align with that principle.
+
+An advantage of applying SOLID principles to my project is better readability. Having both Car and Product controllers
+in the same file made it hard to navigate to a specific method.
+
+A disadvantage of not applying SOLID principles is the lack of adaptability for future requirements.
