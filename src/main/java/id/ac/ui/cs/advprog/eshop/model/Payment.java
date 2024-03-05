@@ -13,6 +13,5 @@ public class Payment {
     @Setter
     private String status;
     public Payment(String paymentId, String method, Map<String,String> paymentData){}
-
     public Payment(String paymentId, String method, Map<String,String> paymentData, String status) {}
 }

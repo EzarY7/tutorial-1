@@ -46,4 +46,12 @@ public class PaymentTest {
         });
     }
 
+    @Test
+    void testSetInvalidStatus() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
+                    "voucherCode", this.paymentData, "727WYFSI");
+        });
+    }
+
 }
