@@ -1,4 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.InvalidArgumentException;
@@ -18,9 +20,10 @@ public class PaymentTest {
 
     @Test
     void testCreateSuccessStatus() {
-        Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b","voucherCode",
-                this.paymentData, "SUCCESS");
-        assertEquals("SUCCESS", payment.getStatus());
+        Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
+                PaymentMethod.VOUCHER.getValue(), this.paymentData, PaymentStatus.SUCCESS.getValue());
+
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -34,9 +37,10 @@ public class PaymentTest {
     @Test
     void testSetStatusToSuccess() {
         Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
-                "voucherCode", this.paymentData);
-        payment.setStatus("SUCCESS");
-        assertEquals("SUCCESS", payment.getStatus());
+                PaymentMethod.VOUCHER.getValue(), this.paymentData);
+
+        payment.setStatus(PaymentStatus.SUCCESS.getValue());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -45,7 +49,7 @@ public class PaymentTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
-                    "voucherCode", this.paymentData);
+                    PaymentMethod.VOUCHER.getValue(), this.paymentData);
         });
     }
 
@@ -53,7 +57,7 @@ public class PaymentTest {
     void testSetInvalidStatus() {
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
-                    "voucherCode", this.paymentData, "727WYFSI");
+                    PaymentMethod.VOUCHER.getValue(), this.paymentData, "727WYFSI");
         });
     }
 
