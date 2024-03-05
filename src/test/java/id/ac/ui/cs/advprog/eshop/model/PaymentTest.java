@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.InvalidArgumentException;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,18 +12,20 @@ public class PaymentTest {
 
     @BeforeEach
     void setUp(){
+        this.paymentData = new HashMap<>();
+        this.paymentData.put("voucherCode","lol");
     }
 
     @Test
     void testCreateSuccessStatus() {
-        Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b","WYSI",
+        Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b","voucherCode",
                 this.paymentData, "SUCCESS");
         assertEquals("SUCCESS", payment.getStatus());
     }
 
     @Test
     void testCreateInvalidMethod() {
-        assertThrows(InvalidArgumentException.class, () -> {
+        assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("13672756-727a-4c07-b727-54cb7276d79b",
                     "WYSI", this.paymentData );
         });
