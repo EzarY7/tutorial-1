@@ -4,6 +4,7 @@ import id.ac.ui.cs.advprog.eshop.enums.OrderStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Product;
 import id.ac.ui.cs.advprog.eshop.repository.OrderRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -60,9 +62,9 @@ public class OrderServiceImplTest {
     @Test
     void testCreateOrderIfAlreadyExists() {
         Order order = orders.get(1);
-        doReturn(order).when(orderRepository), findById(Order.getId());
+        doReturn(order).when(orderRepository).findById(order.getId());
 
-        assertNull(orderService.createOrder(order));
+        Assertions.assertNull(orderService.createOrder(order));
         verify(orderRepository, times(0)).save(order);
     }
 
@@ -112,7 +114,7 @@ public class OrderServiceImplTest {
     @Test
     void testFindAllByIdIfNotFound() {
         doReturn(null).when(orderRepository).findById("zczc");
-        assertNull(orderService.findById("zczc"));
+        Assertions.assertNull(orderService.findById("zczc"));
     }
 
     @Test
@@ -133,7 +135,7 @@ public class OrderServiceImplTest {
         doReturn(new ArrayList<Order>()).when(orderRepository)
                 .findAllByAuthor(order.getAuthor().toLowerCase());
 
-        List<Order> results = orderService.findAllByAUthor(
+        List<Order> results = orderService.findAllByAuthor(
                 order.getAuthor().toLowerCase());
         assertTrue(results.isEmpty());
     }
