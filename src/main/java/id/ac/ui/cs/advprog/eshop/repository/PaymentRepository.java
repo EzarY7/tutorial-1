@@ -9,10 +9,22 @@ import java.util.Map;
 public class PaymentRepository {
     List<Payment> payments = new ArrayList<>();
 
-    public Payment add(Payment payment){return null;}
+    public Payment add(Payment payment){
+        payments.add(payment);
+        return payment;
+    }
 
-    public Payment findById(String id){return null;}
+    public Payment findById(String id){
+        for (Payment payment : payments) {
+            if (payment.getPaymentId().equals(id)) {
+                return payment;
+            }
+        }
+        return null;
+    }
 
-    public List<Payment> findAll(){return null;}
+    public List<Payment> findAll(){
+        return payments;
+    }
 
 }
